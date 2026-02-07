@@ -1,5 +1,6 @@
 package com.betacom.utils;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -83,6 +84,10 @@ public class Utilities {
 	   
 	   return r;
    }
+	public static LocalDate dateToLocalDate(Object value) {
+		if (value == null) return null;
+		return ((Date)value).toLocalDate();
+	}
 
 
 }

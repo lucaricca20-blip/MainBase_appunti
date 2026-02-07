@@ -9,10 +9,14 @@ import com.betacom.process.ProcessExceptions;
 import com.betacom.process.ProcessGenerics;
 import com.betacom.process.ProcessInner;
 import com.betacom.process.ProcessJson;
+import com.betacom.process.ProcessRecursive;
 import com.betacom.process.ProcessReflection;
+import com.betacom.process.ProcessSQL;
 import com.betacom.process.ProcessSequential;
+import com.betacom.process.ProcessSerializzazione;
 import com.betacom.process.ProcessSingleTone;
 import com.betacom.process.ProcessStream;
+import com.betacom.process.ProcessThread;
 import com.betacom.process.StringProcess;
 
 import interfaces.ProcessInterface;
@@ -25,9 +29,9 @@ public class MainProcess { //vedi il pdf MainProcess.pdf per capirlo bene
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);  //Inizio a scrivere Sc poi clicco su ctrl+spazio e mi suggerisce classe Scanner, e mi fa l'import di java.util ecc
-		//System.out.print("Introdurre un parametro [string,exception, date, enum, collection, singleton, sequential, anonima, stream, reflection, inner, generics, json]: "); date non ci interessa, è messo dopo
+		//System.out.print("Introdurre un parametro [string,exception, date, enum, collection, singleton, sequential, anonima, stream, reflection, inner, generics, json, serializzazione, recursive, thread, sql]: "); date non ci interessa, è messo dopo
 		//String inp = sc.nextLine();
-		String inp = "generics"; //lo metto io di base, altrimenti riattivo lo scanner da tastiere delle due righe precedenti
+		String inp = "sql"; //lo metto io di base, altrimenti riattivo lo scanner da tastiere delle due righe precedenti
 		/*
 		 * Nella mappa seguente metto come  chiave la stringa col nome del processo,
 		 * e come valore il processo stesso (in ProcessInterface abbiamo execute,
@@ -51,7 +55,10 @@ public class MainProcess { //vedi il pdf MainProcess.pdf per capirlo bene
 		pr.put("inner", new ProcessInner());
 		pr.put("generics", new ProcessGenerics());
 		pr.put("json", new ProcessJson());
-		
+		pr.put("serializzazione", new ProcessSerializzazione());
+		pr.put("recursive", new ProcessRecursive());
+		pr.put("thread", new ProcessThread());
+		pr.put("sql", new ProcessSQL());
 		/*
 		 * Adesso gli dico che se l'elemento pr contiente come chiave (stringa) ciò
 		 * che metto come inp (o, se tolgo i commenti, che inserisce l'utente come inp)
