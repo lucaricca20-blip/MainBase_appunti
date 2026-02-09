@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import com.betacom.exceptions.AcademyException;
@@ -20,6 +21,8 @@ esegue le query → ServicesQuery coordina le operazioni → DipendentiDAO trasf
  → i risultati vengono stampati.
 È un'architettura a strati ben organizzata: configurazione → connessione → esecuzione query → trasformazione dati → 
 presentazione.
+
+Vedi pure la cartella in appunti DB con gli screen
 	 */
 	
 	private static SQLConfiguration instance = null;
@@ -69,4 +72,7 @@ presentazione.
 		return con;
 	}
 	
+	public void setAutoCommit() throws SQLException { //per avere aggiornamenti subito disponibili
+		con.setAutoCommit(true);
+	}
 }
