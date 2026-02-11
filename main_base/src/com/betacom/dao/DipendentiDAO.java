@@ -42,9 +42,11 @@ public class DipendentiDAO {
 		return resultToObject(lD);
 	}
 	
-	public Optional<dipendenti> findById(Object[] params) throws Exception {
+	public Optional<dipendenti> findById(Integer id) throws Exception {
 		String query = SQLConfiguration.getInstance().getQuert("query.dipendenti.byId");
 		System.out.println(query);
+		
+		Object [] params = new Object [] {id};
 		
 		Map<String, Object> di = db.get(query, params);
 		if (di  == null) 

@@ -64,6 +64,21 @@ Vedi pure la cartella in appunti DB con gli screen
 	public String getQuert(String p) {
 		return queries.getProperty(p);
 	}
+	
+	/*
+	 * Close connection (es. per cambiare db. Es. da mySQL a PostGres). è l'opposto di getConnection del 
+	 * singleton (in quel caso, se non c'è connessione al db attiva, ne avvia una nuova).
+	 */
+	
+	public void closeConnection() throws AcademyException {
+		try {
+			if (con != null) // se la connessione non è null (già chiusa)
+				con.close();
+			con = null;
+		} catch (Exception e) {
+			throw new AcademyException("close connection error: " + e.getLocalizedMessage());
+		}
+	}
 
 	public Connection getConnection() throws AcademyException{
 		if (con == null) {
@@ -74,5 +89,8 @@ Vedi pure la cartella in appunti DB con gli screen
 	
 	public void setAutoCommit() throws SQLException { //per avere aggiornamenti subito disponibili
 		con.setAutoCommit(true);
+	}
+	public void setTransaction() throws SQLException { //se non faccio niente, non fa commit di niente
+		con.setAutoCommit(false);
 	}
 }

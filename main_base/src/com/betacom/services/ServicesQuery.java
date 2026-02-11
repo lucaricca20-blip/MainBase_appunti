@@ -68,7 +68,7 @@ public class ServicesQuery {
 	private void getDipendentiById (Integer id) {
 		System.out.println("getDipendentiById **********");
 		try {
-			Optional<dipendenti> dip = dao.findById(new Object [] {id});
+			Optional<dipendenti> dip = dao.findById(id);
 			if (dip.isEmpty())
 				System.out.println("Dipendente non trovato: " +id);
 			else

@@ -174,6 +174,30 @@ public class SQLManager {
 		return ret;
 
 	}
+	
+	/*
+	 * commit
+	 */
+	
+	public void commit() throws AcademyException {
+		try {
+			SQLConfiguration.getInstance().getConnection().commit();
+		}catch (SQLException e) {
+			throw new AcademyException(e.getMessage());
+		}
+	}
+	
+	/*
+	 * rollback
+	 */
+	
+	public void rollback() throws AcademyException {
+		try {
+			SQLConfiguration.getInstance().getConnection().rollback();
+		}catch (SQLException e) {
+			throw new AcademyException(e.getMessage());
+		}
+	}
 
 	/*
 	 * Query with parameters. Devo aggiornare preparedstatement

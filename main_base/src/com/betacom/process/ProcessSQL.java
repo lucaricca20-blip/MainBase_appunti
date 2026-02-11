@@ -1,5 +1,6 @@
 package com.betacom.process;
 import com.betacom.services.ServicesQuery;
+import com.betacom.services.ServicesTransaction;
 import com.betacom.services.ServicesUpdate;
 import com.betacom.singletone.SQLConfiguration;
 
@@ -15,8 +16,9 @@ public class ProcessSQL implements ProcessInterface{
 			SQLConfiguration.getInstance().getConnection();
 			System.out.println("Connection with db ok");
 			
-			// new ServicesQuery().executeQuery();  // riattivalo se vuoi vedere metodi col db
+			new ServicesQuery().executeQuery();  // riattivalo se vuoi vedere metodi col db
 			new ServicesUpdate().executeUpdate();
+			new ServicesTransaction().executeTransaction();
 			
 			
 		} catch (Exception e) {
